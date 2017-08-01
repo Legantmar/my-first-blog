@@ -54,4 +54,19 @@ __pycache__
 myvenv
 db.sqlite3
 .DS_Store
-5)
+5) проверка статуса $ git status
+6) сохранить изменения 
+$ git add --all
+$ git commit - m "First commit"
+
+
+заменить в файле mysite/settings.py
+ALLOWED_HOSTS = ['legantmar.pythonanywhere.com']
+
+в командной строке
+перейдем в нашу директорию
+cd /d D:\DjangoTest
+активируем виртуальное окружение
+D:\TestFolder> myenv\Scripts\activate
+запустим InteractiveConsole
+(myenv) D:\TestFolder> python manage.py shell
