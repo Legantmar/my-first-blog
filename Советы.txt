@@ -1,0 +1,57 @@
+https://tutorial.djangogirls.org/ru/django_start_project/
+с помощью командной строки
+1) pip install virtualenv (для Python 2.7)
+2) перейти в нужную папку командой cd /d D:\TestFolder
+3) создание вируального окружения для папки 
+D:\TestFolder> C:\Python27\python -m virtualenv myenv (где myenv любое имя моего вирт. окружения, но должно быть прописными буквами!?)
+4) активируем окружение
+D:\TestFolder> myenv\Scripts\activate
+5) устнавливаем django
+(myenv) D:\TestFolder> pip install django
+6) создаем сайт
+(myenv) D:\TestFolder> django-admin startproject mysite . (точка важна, она показывает, что сайт нужно создать в этой же директории)
+7) в файле setting поправить
+TIME_ZONE = 'Europe/Moscow'
+добавить в конце файла
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+8) чтобы создать базу данных нашего сайта
+(myenv) D:\TestFolder> python manage.py migrate
+9) запуск веб-сервера
+(myenv) D:\TestFolder> python manage.py runserver
+10) проверка сайта в веб-браузере 127.0.0.1:8000
+
+11) остановка сервера Ctrl-Break (Ctrl-Pause)
+12) создадим блог
+python manage.py startapp blog
+13) добавить в файл setting INSTALLED_APPS 'blog',
+14) создадим модель в файле blog\models.py (см. ссылку https://tutorial.djangogirls.org/ru/django_models/)
+15) добавление модели в базу данных
+(myenv) D:\TestFolder> python manage.py makemigrations blog
+16) python manage.py migrate blog
+
+редактирование blog/admin.py
+1) добавить строчки кода
+from .models import Post
+admin.site.register(Post)
+2) запускаем вебсервер python manage.py runserver
+и проверяем наличие админ-панели 127.0.0.1:8000/admin
+3) создаем суперпользователя
+python manage.py createsuperuser
+4) заходим в панель администрирования
+5) пишем посты на русском получаем ошибку unicode
+в models.py зменяем def__str__(self) на def__unicode(self)
+
+публикация в интернете
+1) установка Git https://git-scm.com/ (скачать  запустить)
+2) как запустить git bash из нашей директории с другого диска https://ru.stackoverflow.com/questions/473640/git-bash-изменить-домашний-каталог
+в свойства заменить Рабочую папку и в пути файла удалить --cd-to-home
+3)$ git init
+$ git config --global user.name "Your Name"
+$ git config --global user.email you@example.com
+4) создать файл .gitignore (из блокнота сохранить как) 
+*.pyc
+__pycache__
+myvenv
+db.sqlite3
+.DS_Store
+5)
